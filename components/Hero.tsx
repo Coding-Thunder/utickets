@@ -1,31 +1,77 @@
 import React from 'react';
-import flightIllustration from "../public/svg/hero-vector1.svg"
+import { Button } from '@/components/ui/button';
+import { FaPlaneDeparture, FaPlaneArrival, FaCalendarAlt, FaSearch } from 'react-icons/fa';
+import b777 from "@/public/jpg-jpeg/b777.jpg"
 
-const Hero: React.FC = () => {
+// Define the airplane image link as a variable
+
+const HeroSection: React.FC = () => {
     return (
-        <section className="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-20">
-            <div className="container mx-auto px-6 flex flex-col md:flex-row items-center">
-                <div className="flex-1 mb-10 md:mb-0 text-center md:text-left">
-                    <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                        Find Your Next <br /> Desination
-                    </h1>
-                    <p className="mt-4 text-lg md:text-xl">
-                        Discover the best deals on flights to your favorite destinations.
-                    </p>
-                    <button className="mt-8 bg-white text-blue-600 px-8 py-3 rounded-full shadow hover:bg-gray-100 transition duration-300 ease-in-out">
-                        Book Now
-                    </button>
-                </div>
-                <div className="flex-1 text-center">
-                    <img
-                        src={flightIllustration.src}
-                        alt="Travel illustration"
-                        className="w-full max-w-md mx-auto md:mx-0"
-                    />
+        <section className="relative  text-white py-24  overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${b777.src})` }} />
+            <div className="relative container  mx-auto px-6 flex flex-col items-center">
+                <h1 className="text-6xl font-bold mb-4 drop-shadow-lg">Explore the Skies</h1>
+                <p className="text-xl mb-10 drop-shadow-lg">Find and book flights at the best prices.</p>
+                <div className="w-full max-w-5xl bg-white text-gray-900 p-6 rounded-lg shadow-lg backdrop-blur-lg bg-opacity-80">
+                    <form className="flex flex-wrap items-center gap-4">
+                        {/* Leaving From Field */}
+                        <div className="flex-1 min-w-[180px] flex flex-col relative">
+                            <label className="text-gray-500 text-sm mb-1">Leaving from</label>
+                            <div className="flex items-center">
+                                <FaPlaneDeparture className="absolute left-3 text-gray-500" />
+                                <input
+                                    type="text"
+                                    placeholder="Leaving from"
+                                    className="w-full pl-10 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                />
+                            </div>
+                        </div>
+                        {/* Where To Field */}
+                        <div className="flex-1 min-w-[180px] flex flex-col relative">
+                            <label className="text-gray-500 text-sm mb-1">Where to</label>
+                            <div className="flex items-center">
+                                <FaPlaneArrival className="absolute left-3 text-gray-500" />
+                                <input
+                                    type="text"
+                                    placeholder="Where to"
+                                    className="w-full  pl-10 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                />
+                            </div>
+                        </div>
+                        {/* Depart Date Field */}
+                        <div className="flex-1 min-w-[180px] flex flex-col relative">
+                            <label className="text-gray-500 text-sm mb-1">Depart</label>
+                            <div className="flex items-center">
+                                <FaCalendarAlt className="absolute left-3 text-gray-500" />
+                                <input
+                                    type="date"
+                                    className="w-full px-4 pl-10 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                />
+                            </div>
+                        </div>
+                        {/* Return Date Field */}
+                        <div className="flex-1 min-w-[180px] flex flex-col relative">
+                            <label className="text-gray-500 text-sm mb-1">Return</label>
+                            <div className="flex items-center">
+                                <FaCalendarAlt className="absolute left-3 text-gray-500" />
+                                <input
+                                    type="date"
+                                    className="w-full px-4 pl-10 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                />
+                            </div>
+                        </div>
+                    </form>
+                    {/* Button Container */}
+                    <div className="flex justify-center mt-6">
+                        <Button className="flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white py-3 px-6 rounded-md shadow-lg transition duration-300 ease-in-out">
+                            <FaSearch className="text-xl" />
+                            <span className="ml-2">Search Flights</span>
+                        </Button>
+                    </div>
                 </div>
             </div>
         </section>
     );
 };
 
-export default Hero;
+export default HeroSection;
