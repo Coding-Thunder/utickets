@@ -1,4 +1,6 @@
 "use client"
+import { routings } from '@/lib/utils';
+import Link from 'next/link';
 import React, { useState } from 'react';
 
 // Define a type for the props if you need to pass any
@@ -10,16 +12,16 @@ const Header: React.FC<HeaderProps> = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white text-black  shadow-lg ">
+    <header className="bg-white text-black sticky top-0 left-0 z-40  shadow-lg ">
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
         <div className="flex items-center">
           <span className="font-semibold text-2xl tracking-tight text-ble">FlightFinder</span>
         </div>
         <nav className="hidden md:flex space-x-8 items-center">
-          <a href="/search" className="hover:text-gray-300 transition duration-300 ease-in-out">Search Flights</a>
-          <a href="/my-bookings" className="hover:text-gray-300 transition duration-300 ease-in-out">Bookings</a>
-          <a href="/about" className="hover:text-gray-300 transition duration-300 ease-in-out">About</a>
-          <a href="/contact" className="hover:text-gray-300 transition duration-300 ease-in-out">Support</a>
+          <Link href={routings.home} className="block py-2 hover:text-gray-300 transition duration-300 ease-in-out">Home</Link>
+          <Link href={routings.my_bookings} className="hover:text-gray-300 transition duration-300 ease-in-out">My Bookings</Link>
+          <Link href={routings.about} className="hover:text-gray-300 transition duration-300 ease-in-out">About</Link>
+          <Link href={routings.support} className="hover:text-gray-300 transition duration-300 ease-in-out">Support</Link>
           <div className="flex space-x-4">
             <button className="bg-white text-blue-600 px-4 py-2 rounded-full shadow hover:bg-gray-100 transition duration-300 ease-in-out">
               Log In
@@ -40,10 +42,10 @@ const Header: React.FC<HeaderProps> = () => {
       {isMenuOpen && (
         <div className="md:hidden">
           <nav className="px-6 pt-4 pb-2">
-            <a href="/search" className="block py-2 hover:text-gray-300 transition duration-300 ease-in-out">Search Flights</a>
-            <a href="/my-bookings" className="block py-2 hover:text-gray-300 transition duration-300 ease-in-out">Bookings</a>
-            <a href="/about" className="block py-2 hover:text-gray-300 transition duration-300 ease-in-out">About</a>
-            <a href="/contact" className="block py-2 hover:text-gray-300 transition duration-300 ease-in-out">Support</a>
+            <Link href={routings.home} className="block py-2 hover:text-gray-300 transition duration-300 ease-in-out">Home</Link>
+            <Link href={routings.my_bookings} className="block py-2 hover:text-gray-300 transition duration-300 ease-in-out">My Bookings</Link>
+            <Link href={routings.about} className="block py-2 hover:text-gray-300 transition duration-300 ease-in-out">About</Link>
+            <Link href={routings.support} className="block py-2 hover:text-gray-300 transition duration-300 ease-in-out">Support</Link>
             <div className="mt-4">
               <button className="block w-full bg-white text-blue-600 px-4 py-2 rounded-full shadow hover:bg-gray-100 transition duration-300 ease-in-out mb-2">
                 Log In

@@ -1,7 +1,7 @@
 import React from 'react';
-import tokyo from "../public/webp/tokyo.webp"
-import paris from "../public/webp/paris.jpg"
-import sydney from "../public/webp/sydney.webp"
+import tokyo from "@/public/webp/tokyo.webp"
+import paris from "@/public/webp/paris.jpg"
+import sydney from "@/public/webp/sydney.webp"
 
 type Destination = {
     name: string;
