@@ -14,7 +14,7 @@ const MissionVision: React.FC = () => {
                         <FaCheckCircle className="text-blue-500 text-2xl mb-4" />
                         <h3 className="text-2xl font-semibold text-gray-900 mb-2">Customer-Centric Approach</h3>
                         <p className="text-gray-700">
-                            We prioritize our customers' needs and provide personalized support to ensure a smooth travel experience from start to finish.
+                            We prioritize our {"customer's"} needs and provide personalized support to ensure a smooth travel experience from start to finish.
                         </p>
                     </div>
                     <div className="bg-white p-6 rounded-lg shadow-lg text-left">
