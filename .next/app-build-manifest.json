@@ -1,0 +1,52 @@
+{
+  "pages": {
+    "/_not-found/page": [
+      "static/chunks/webpack-96295b30648277ef.js",
+      "static/chunks/fd9d1056-51face16839d2cb0.js",
+      "static/chunks/23-4a58c6ebfba75870.js",
+      "static/chunks/main-app-6e77bc35a734a3b5.js",
+      "static/chunks/app/_not-found/page-1cf770a61245fdcb.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack-96295b30648277ef.js",
+      "static/chunks/fd9d1056-51face16839d2cb0.js",
+      "static/chunks/23-4a58c6ebfba75870.js",
+      "static/chunks/main-app-6e77bc35a734a3b5.js",
+      "static/css/15c776dd670471af.css",
+      "static/chunks/536-bba687d8210d7d39.js",
+      "static/chunks/app/layout-45f901e69770f8c8.js"
+    ],
+    "/about/page": [
+      "static/chunks/webpack-96295b30648277ef.js",
+      "static/chunks/fd9d1056-51face16839d2cb0.js",
+      "static/chunks/23-4a58c6ebfba75870.js",
+      "static/chunks/main-app-6e77bc35a734a3b5.js",
+      "static/chunks/app/about/page-7683092e59200048.js"
+    ],
+    "/my-bookings/page": [
+      "static/chunks/webpack-96295b30648277ef.js",
+      "static/chunks/fd9d1056-51face16839d2cb0.js",
+      "static/chunks/23-4a58c6ebfba75870.js",
+      "static/chunks/main-app-6e77bc35a734a3b5.js",
+      "static/chunks/8e1d74a4-96e7f5e1aa1fb92d.js",
+      "static/chunks/536-bba687d8210d7d39.js",
+      "static/chunks/473-aed12487f455c72a.js",
+      "static/chunks/app/my-bookings/page-1351ebb73a874cff.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-96295b30648277ef.js",
+      "static/chunks/fd9d1056-51face16839d2cb0.js",
+      "static/chunks/23-4a58c6ebfba75870.js",
+      "static/chunks/main-app-6e77bc35a734a3b5.js",
+      "static/chunks/536-bba687d8210d7d39.js",
+      "static/chunks/app/page-b98e52d292c7623b.js"
+    ],
+    "/support/page": [
+      "static/chunks/webpack-96295b30648277ef.js",
+      "static/chunks/fd9d1056-51face16839d2cb0.js",
+      "static/chunks/23-4a58c6ebfba75870.js",
+      "static/chunks/main-app-6e77bc35a734a3b5.js",
+      "static/chunks/app/support/page-00a6d7701d190e1b.js"
+    ]
+  }
+}
