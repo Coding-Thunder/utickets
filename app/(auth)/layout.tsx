@@ -13,7 +13,7 @@ const fontSans = FontSans({
 })
 
 export const metadata: Metadata = {
-    title: "Universal Ticketss",
+    title: "Registes Ticketss",
     description: "Book cheap flight tickets",
 };
 
