@@ -12,5 +12,8 @@ export const routings = {
   search_flights: "/search-flights",
   my_bookings: "/my-bookings",
   about: "/about",
-  support: "/support"
+  support: "/support",
+  sign_in: "/sign-in",
+  sign_up: "/sign-up",
+  terms_and_conditons: "/terms-and-conditons"
 }

@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google"
 import "./globals.css";
-import SupportHeader from "@/components/Home/SupportHeader";
-import Header from "@/components/Commmon/Header";
-import Footer from "@/components/Commmon/Footer";
 import { cn } from "@/lib/utils";
-import Disclaimer from "@/components/Commmon/Disclaimer";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -17,7 +13,7 @@ export const metadata: Metadata = {
   description: "Book cheap flight tickets",
 };
 
-export default function RootLayout({
+export default function GlobalLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -25,11 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
-        <SupportHeader />
-        <Header />
         {children}
-        <Footer />
-        <Disclaimer />
       </body>
     </html>
   );

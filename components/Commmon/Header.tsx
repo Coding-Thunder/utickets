@@ -15,7 +15,7 @@ const Header: React.FC<HeaderProps> = () => {
     <header className="bg-white text-black sticky top-0 left-0 z-40  shadow-lg ">
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
         <div className="flex items-center">
-          <span className="font-semibold text-2xl tracking-tight text-ble">FlightFinder</span>
+          <span className="font-semibold text-2xl tracking-tight text-ble">Universal<span className='text-blue-900'>Ticketss</span></span>
         </div>
         <nav className="hidden md:flex space-x-8 items-center">
           <Link href={routings.home} className="block py-2 hover:text-gray-300 transition duration-300 ease-in-out">Home</Link>
@@ -23,12 +23,12 @@ const Header: React.FC<HeaderProps> = () => {
           <Link href={routings.about} className="hover:text-gray-300 transition duration-300 ease-in-out">About</Link>
           <Link href={routings.support} className="hover:text-gray-300 transition duration-300 ease-in-out">Support</Link>
           <div className="flex space-x-4">
-            <button className="bg-white text-blue-600 px-4 py-2 rounded-full shadow hover:bg-gray-100 transition duration-300 ease-in-out">
+            <Link href={routings.sign_in} className="bg-white text-blue-600 px-4 py-2 rounded-full shadow hover:bg-gray-100 transition duration-300 ease-in-out">
               Log In
-            </button>
-            <button className="bg-blue-600 border border-white text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out">
+            </Link>
+            <Link href={routings.sign_up} className="bg-blue-600 border border-white text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out">
               Sign Up
-            </button>
+            </Link>
           </div>
         </nav>
         <div className="md:hidden">
@@ -47,12 +47,12 @@ const Header: React.FC<HeaderProps> = () => {
             <Link href={routings.about} className="block py-2 hover:text-gray-300 transition duration-300 ease-in-out">About</Link>
             <Link href={routings.support} className="block py-2 hover:text-gray-300 transition duration-300 ease-in-out">Support</Link>
             <div className="mt-4">
-              <button className="block w-full bg-white text-blue-600 px-4 py-2 rounded-full shadow hover:bg-gray-100 transition duration-300 ease-in-out mb-2">
+              <Link href={routings.sign_in} className="block w-full bg-white text-blue-600 px-4 py-2 rounded-full shadow hover:bg-gray-100 transition duration-300 ease-in-out mb-2">
                 Log In
-              </button>
-              <button className="block w-full bg-blue-600 border border-white text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out">
+              </Link>
+              <Link href={routings.sign_up} className="block w-full bg-blue-600 border border-white text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out">
                 Sign Up
-              </button>
+              </Link>
             </div>
           </nav>
         </div>
