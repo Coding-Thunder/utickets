@@ -6,8 +6,8 @@ const publicAxiosInstance = axios.create({
     timeout: 10000, // Set a timeout if desired
     headers: {
         'Content-Type': 'application/json',
-        "Access-Control-Allow-Origin": "https://www.universalticketss.com/"
-        // 'Origin': 'http://localhost:3000/', // Match the allowed origin in CORS
+        "Access-Control-Allow-Origin": "https://www.universalticketss.com/",
+        'Origin': 'https://www.universalticketss.com/', // Match the allowed origin in CORS
     },
     withCredentials: true // Ensure this is allowed in CORS settings
 });
