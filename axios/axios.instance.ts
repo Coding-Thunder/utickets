@@ -1,7 +1,8 @@
+import { config } from '@/lib/utils';
 import axios from 'axios';
 
 const publicAxiosInstance = axios.create({
-    baseURL: process.env.NEXT_API_BASE_URL || "http://localhost:3002", // Use baseURL from your config or set it directly
+    baseURL: config.productionServerUrl, // Use baseURL from your config or set it directly
     timeout: 10000, // Set a timeout if desired
     headers: {
         'Content-Type': 'application/json',

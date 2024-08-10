@@ -31,3 +31,9 @@ export const handleError = (error: any, toast: any) => {
     toast({ description: messageError[0], duration: 2000 })
   }
 }
+
+
+export const config = {
+  localServerUrl: "http://localhost:3002",
+  productionServerUrl: "https://api.universalticketss.com"
+}
