@@ -10,7 +10,6 @@ const publicAxiosInstance = axios.create({
         // 'Origin' header is usually set automatically by the browser
         // You can specify it if needed, but it's not commonly required for client-side requests
     },
-    withCredentials: true, // Ensure credentials are sent
 });
 
 const privateAxiosInstance = axios.create({
