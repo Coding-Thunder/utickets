@@ -6,6 +6,7 @@ const publicAxiosInstance = axios.create({
     timeout: 10000, // Set a timeout if desired
     headers: {
         'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*",
         // 'Origin' header is usually set automatically by the browser
         // You can specify it if needed, but it's not commonly required for client-side requests
     },
