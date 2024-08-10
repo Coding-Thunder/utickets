@@ -1,4 +1,4 @@
-// File: /home/vinay/Desktop/Abhinav/utickets/app/(auth)/layout.tsx
+// File: /home/vinay/Desktop/Abhinav/utickets/client/app/(auth)/layout.tsx
 import * as entry from '../../../../app/(auth)/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

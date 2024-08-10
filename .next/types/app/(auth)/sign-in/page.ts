@@ -1,4 +1,4 @@
-// File: /home/vinay/Desktop/Abhinav/utickets/app/(auth)/sign-in/page.tsx
+// File: /home/vinay/Desktop/Abhinav/utickets/client/app/(auth)/sign-in/page.tsx
 import * as entry from '../../../../../app/(auth)/sign-in/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

@@ -1,15 +1,35 @@
 "use client"
 import { routings } from '@/lib/utils';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
+import UserAvatar from "@/components/UserAvatar/UserAvatar"
+import { useRouter } from 'next/navigation';
 // Define a type for the props if you need to pass any
 type HeaderProps = {
   // Add any props you might need here
+  // user?: Record<string, any>
 };
 
 const Header: React.FC<HeaderProps> = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [user, setUser] = useState<Record<string, any> | any>(null)
+  const router = useRouter();
+
+
+  const getUser = useCallback(async () => {
+    const userObject = await JSON.parse(localStorage.getItem("user") as string)
+    setUser(userObject)
+  }, [])
+
+  const onLogout = () => {
+    localStorage.clear()
+    window.location.reload()
+  }
+
+  useEffect(() => {
+    getUser()
+  }, [getUser])
 
   return (
     <header className="bg-white text-black sticky top-0 left-0 z-40  shadow-lg ">
@@ -23,12 +43,20 @@ const Header: React.FC<HeaderProps> = () => {
           <Link href={routings.about} className="hover:text-gray-300 transition duration-300 ease-in-out">About</Link>
           <Link href={routings.support} className="hover:text-gray-300 transition duration-300 ease-in-out">Support</Link>
           <div className="flex space-x-4">
-            <Link href={routings.sign_in} className="bg-white text-blue-600 px-4 py-2 rounded-full shadow hover:bg-gray-100 transition duration-300 ease-in-out">
-              Log In
-            </Link>
-            <Link href={routings.sign_up} className="bg-blue-600 border border-white text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out">
-              Sign Up
-            </Link>
+
+            {user?.full_name ? (
+              <UserAvatar onLogout={onLogout} full_name={user.full_name} />
+            ) : (
+              <>
+                <Link href={routings.sign_in} className="bg-white text-blue-600 px-4 py-2 rounded-full shadow hover:bg-gray-100 transition duration-300 ease-in-out">
+                  Log In
+                </Link>
+                <Link href={routings.sign_up} className="bg-blue-600 border border-white text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out">
+                  Sign Up
+                </Link>
+              </>
+            )}
+
           </div>
         </nav>
         <div className="md:hidden">
@@ -47,12 +75,20 @@ const Header: React.FC<HeaderProps> = () => {
             <Link href={routings.about} className="block py-2 hover:text-gray-300 transition duration-300 ease-in-out">About</Link>
             <Link href={routings.support} className="block py-2 hover:text-gray-300 transition duration-300 ease-in-out">Support</Link>
             <div className="mt-4">
-              <Link href={routings.sign_in} className="block w-full bg-white text-blue-600 px-4 py-2 rounded-full shadow hover:bg-gray-100 transition duration-300 ease-in-out mb-2">
-                Log In
-              </Link>
-              <Link href={routings.sign_up} className="block w-full bg-blue-600 border border-white text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out">
-                Sign Up
-              </Link>
+
+              {user?.full_name ? (
+                <UserAvatar onLogout={onLogout} full_name={user.full_name} />
+              ) : (
+                <>
+                  <Link href={routings.sign_in} className="block w-full bg-white text-blue-600 px-4 py-2 rounded-full shadow hover:bg-gray-100 transition duration-300 ease-in-out mb-2">
+                    Log In
+                  </Link>
+                  <Link href={routings.sign_up} className="block w-full bg-blue-600 border border-white text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out">
+                    Sign Up
+                  </Link>
+                </>
+              )}
+
             </div>
           </nav>
         </div>
@@ -60,5 +96,9 @@ const Header: React.FC<HeaderProps> = () => {
     </header>
   );
 };
+
+const mapStateToProps = ({ user }: any) => ({
+  user,
+})
 
 export default Header;

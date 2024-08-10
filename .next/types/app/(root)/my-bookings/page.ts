@@ -1,4 +1,4 @@
-// File: /home/vinay/Desktop/Abhinav/utickets/app/(root)/my-bookings/page.tsx
+// File: /home/vinay/Desktop/Abhinav/utickets/client/app/(root)/my-bookings/page.tsx
 import * as entry from '../../../../../app/(root)/my-bookings/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
