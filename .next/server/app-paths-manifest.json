@@ -5,8 +5,8 @@
   "/(root)/my-bookings/page": "app/(root)/my-bookings/page.js",
   "/(root)/page": "app/(root)/page.js",
   "/(root)/support/page": "app/(root)/support/page.js",
-  "/(auth)/sign-in/page": "app/(auth)/sign-in/page.js",
   "/(auth)/sign-in-success/page": "app/(auth)/sign-in-success/page.js",
+  "/(auth)/sign-in/page": "app/(auth)/sign-in/page.js",
   "/(auth)/sign-up/page": "app/(auth)/sign-up/page.js",
   "/(auth)/terms-and-conditons/page": "app/(auth)/terms-and-conditons/page.js"
 }
