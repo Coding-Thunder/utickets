@@ -1,8 +1,15 @@
 import { config } from '@/lib/utils';
 import axios from 'axios';
 
+
+// Determine the base URL based on the environment
+const baseURL = process.env.NODE_ENV === 'production'
+    ? config.productionServerUrl
+    : config.localServerUrl; // Development URL
+
+
 const publicAxiosInstance = axios.create({
-    baseURL: config.productionServerUrl, // Use baseURL from your config or set it directly
+    baseURL, // Use baseURL from your config or set it directly
     timeout: 10000, // Set a timeout if desired
     headers: {
         'Content-Type': 'application/json',

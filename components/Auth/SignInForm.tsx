@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { FaAirbnb } from 'react-icons/fa'; // Placeholder icon
-import b777 from "@/public/jpg-jpeg/b777.jpg"
+import b777 from "@/public/webp/b777.webp"
 import { handleError, routings } from '@/lib/utils';
 import apiService from '@/axios/api.service';
 import { useToast } from '../ui/use-toast';

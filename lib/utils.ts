@@ -21,15 +21,12 @@ export const routings = {
 
 
 export const handleError = (error: any, toast: any) => {
+  console.log(error, "error")
   const messageError = error.response.data.message
   if (Array.isArray(messageError)) {
-    if (messageError.length > 1) {
-      toast({ description: "Plese fill all the fields", duration: 2000 })
-
-    }
-  } else {
     toast({ description: messageError[0], duration: 2000 })
   }
+  toast({ description: messageError, duration: 2000 })
 }
 
 

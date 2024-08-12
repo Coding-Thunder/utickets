@@ -1,7 +1,6 @@
 import React from 'react';
-import { Button } from '@/components/ui/button';
 import { FaPlaneDeparture, FaPlaneArrival, FaCalendarAlt, FaSearch } from 'react-icons/fa';
-import b777 from "@/public/jpg-jpeg/b777.jpg"
+import b777 from "@/public/webp/b777.webp"
 import Link from 'next/link';
 
 // Define the airplane image link as a variable

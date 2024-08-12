@@ -5,13 +5,12 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { FaAirbnb } from 'react-icons/fa'; // Placeholder icon
-import b777 from "@/public/jpg-jpeg/b777.jpg"
+import b777 from "@/public/webp/b777.webp"
 import { handleError, routings } from '@/lib/utils';
 import { useToast } from '../ui/use-toast';
 import apiService from '@/axios/api.service';
 import { useRouter } from 'next/navigation';
-import { loginAction } from '@/redux/user/actions';
-import { connect } from 'react-redux';
+
 
 interface Props {
     // setUser: (payload: any) => void
@@ -27,54 +26,69 @@ const SignUpForm: React.FC<Props> = () => {
     const router = useRouter()
 
     const handleSignUp = async (e: FormEvent) => {
-        e.preventDefault()
+        e.preventDefault();
+
         const toastMessage = {
-            description: "ALl fields are necessory",
+            description: "",
             duration: 3000
+        };
+
+        // Validate all fields are filled
+        if (!fullName || !email || !password || !confirmPassword) {
+            toastMessage.description = "All fields are necessary";
+            toast(toastMessage);
+            return;
         }
 
-        const compliment = fullName && email && password && confirmPassword
-        if (compliment && !termsAndConditionsChecked) {
-            toastMessage.description = "Please check terms & conditions"
-            toast(toastMessage)
+        // Validate terms and conditions are checked
+        if (!termsAndConditionsChecked) {
+            toastMessage.description = "Please accept the terms and conditions";
+            toast(toastMessage);
+            return;
         }
 
-        if (compliment && (password !== confirmPassword)) {
-            toastMessage.description = "Passwords do not match"
-            toast(toastMessage)
+        // Validate passwords match
+        if (password !== confirmPassword) {
+            toastMessage.description = "Passwords do not match";
+            toast(toastMessage);
+            return;
         }
 
+        // Prepare the payload for the API request
         const payload = {
             full_name: fullName,
             email,
             password,
             confirm_password: confirmPassword
-        }
+        };
+
         try {
-            const { data } = await apiService.signup(payload)
+            // Attempt to sign up the user
+            const { data } = await apiService.signup(payload);
 
-            if (data) {
-                if (data.user) {
-                    localStorage.setItem("user", JSON.stringify(data.user))
-                    localStorage.setItem("token", data.token)
-                    return
-                }
-                setTimeout(() => {
-                    router.push(data.redirect)
+            // Handle the response
+            if (data && data.user) {
+                localStorage.setItem("user", data.user);
+                localStorage.setItem("token", data.token);
 
-                }, 3000)
-                toastMessage.description = data.message
-                toast(toastMessage)
+                // Optionally navigate to a different page or show a success message
+                toastMessage.description = "Sign up successful!";
+                toast(toastMessage);
+            } else if (data && data.message) {
+                // Show the message returned by the API
+                toastMessage.description = data.message;
+                toast(toastMessage);
             }
 
+            // Redirect the user after a short delay
+            setTimeout(() => {
+                router.push(data.redirect); // Replace with the appropriate route
+            }, 2000);
         } catch (error: any) {
-            handleError(error, toast)
+            // Handle errors, possibly network issues or API failures
+            handleError(error, toast);
         }
-
-
-
-
-    }
+    };
 
     return (
         <div

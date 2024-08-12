@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button } from '@/components/ui/button';
-import { FaInfoCircle } from 'react-icons/fa';
-import b777 from "@/public/jpg-jpeg/b777.jpg"
+// import { Button } from '@/components/ui/button';
+// import { FaInfoCircle } from 'react-icons/fa';
+import b777 from "@/public/webp/b777.webp"
 
 const AboutPageHero: React.FC = () => {
     return (

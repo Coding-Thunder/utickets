@@ -1,9 +1,9 @@
 import React from 'react';
 import { FaPlane } from 'react-icons/fa';
-import americanAirlines from "@/public/png/aa.png"
-import unitedAirlines from "@/public/png/ua.png"
-import frontienrAirlines from "@/public/png/fa.png"
-import spiritAirlines from "@/public/jpg-jpeg/sa.jpg"
+import americanAirlines from "@/public/webp/aa.webp"
+import unitedAirlines from "@/public/webp/aa.webp"
+import frontienrAirlines from "@/public/webp/fa.webp"
+import spiritAirlines from "@/public/webp/sa.webp"
 import { cn } from '@/lib/utils';
 
 const popularRoutes = [

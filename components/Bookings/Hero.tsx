@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaCalendarAlt, FaTicketAlt } from 'react-icons/fa';
 import Image from 'next/image';
-import b777 from "@/public/jpg-jpeg/b777.jpg"
+import b777 from "@/public/webp/b777.webp"
 import Link from 'next/link';
 
 const HeroSection: React.FC = () => {

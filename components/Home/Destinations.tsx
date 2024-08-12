@@ -1,6 +1,6 @@
 import React from 'react';
 import tokyo from "@/public/webp/tokyo.webp"
-import paris from "@/public/webp/paris.jpg"
+import paris from "@/public/webp/paris.webp"
 import sydney from "@/public/webp/sydney.webp"
 
 type Destination = {
