@@ -2,9 +2,10 @@
 import { routings } from '@/lib/utils';
 import Link from 'next/link';
 import React, { useCallback, useEffect, useState } from 'react';
-
+import { useSelector } from 'react-redux';
 import UserAvatar from "@/components/UserAvatar/UserAvatar"
 import { useRouter } from 'next/navigation';
+import { RootState } from '@/redux/store';
 // Define a type for the props if you need to pass any
 type HeaderProps = {
   // Add any props you might need here
@@ -12,15 +13,11 @@ type HeaderProps = {
 };
 
 const Header: React.FC<HeaderProps> = () => {
+  const user = useSelector((state: RootState) => state.user);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [user, setUser] = useState<Record<string, any> | any>(null)
+  // const [user, setUser] = useState<Record<string, any> | any>(null)
   const router = useRouter();
-
-
-  const getUser = useCallback(async () => {
-    const userObject = await JSON.parse(localStorage.getItem("user") as string)
-    setUser(userObject)
-  }, [])
 
   const onLogout = () => {
     localStorage.clear()
@@ -28,8 +25,8 @@ const Header: React.FC<HeaderProps> = () => {
   }
 
   useEffect(() => {
-    getUser()
-  }, [getUser])
+    console.log(user, "from redux")
+  }, [])
 
   return (
     <header className="bg-white text-black sticky top-0 left-0 z-40  shadow-lg ">
@@ -44,8 +41,8 @@ const Header: React.FC<HeaderProps> = () => {
           <Link href={routings.support} className="hover:text-gray-300 transition duration-300 ease-in-out">Support</Link>
           <div className="flex space-x-4">
 
-            {user?.full_name ? (
-              <UserAvatar onLogout={onLogout} full_name={user.full_name} />
+            {user?.fullName ? (
+              <UserAvatar onLogout={onLogout} full_name={user.fullName} />
             ) : (
               <>
                 <Link href={routings.sign_in} className="bg-white text-blue-600 px-4 py-2 rounded-full shadow hover:bg-gray-100 transition duration-300 ease-in-out">
@@ -76,8 +73,8 @@ const Header: React.FC<HeaderProps> = () => {
             <Link href={routings.support} className="block py-2 hover:text-gray-300 transition duration-300 ease-in-out">Support</Link>
             <div className="mt-4">
 
-              {user?.full_name ? (
-                <UserAvatar onLogout={onLogout} full_name={user.full_name} />
+              {user?.fullName ? (
+                <UserAvatar onLogout={onLogout} full_name={user.fullName} />
               ) : (
                 <>
                   <Link href={routings.sign_in} className="block w-full bg-white text-blue-600 px-4 py-2 rounded-full shadow hover:bg-gray-100 transition duration-300 ease-in-out mb-2">

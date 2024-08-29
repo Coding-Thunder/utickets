@@ -11,14 +11,14 @@ const AddressSection: React.FC = () => {
                         <FaMapMarkerAlt className="text-3xl text-blue-600" />
                         <div>
                             <h3 className="text-xl font-semibold text-gray-800">Our Address</h3>
-                            <p className="text-gray-600 mt-2">1234 Elm Street, Suite 567, Springfield, IL 62704, USA</p>
+                            <p className="text-gray-600 mt-2">1309 Coffeen Avenue, STE 1200, Sheridan, Wyoming 82801, USA</p>
                         </div>
                     </div>
                     <div className="flex items-start space-x-4 p-6 bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl duration-300 ease-in-out">
                         <FaPhoneAlt className="text-3xl text-blue-600" />
                         <div>
                             <h3 className="text-xl font-semibold text-gray-800">Phone</h3>
-                            <p className="text-gray-600 mt-2">+1-877-671-6033</p>
+                            <p className="text-gray-600 mt-2">+1-860-946-4369</p>
                         </div>
                     </div>
                     <div className="flex items-start space-x-4 p-6 bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl duration-300 ease-in-out">

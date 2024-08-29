@@ -3,8 +3,7 @@ import { Inter as FontSans } from "next/font/google"
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
-import { Provider } from "react-redux";
-import store from "@/redux/store";
+import ReduxProvider from "@/components/ReduxProvider";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -24,10 +23,11 @@ export default function GlobalLayout({
   return (
     <html lang="en">
       <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
-        {children}
+        <ReduxProvider>
+          {children}
+        </ReduxProvider>
         <Toaster />
       </body>
-
     </html>
   );
 }

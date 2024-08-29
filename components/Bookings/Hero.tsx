@@ -3,6 +3,7 @@ import { FaCalendarAlt, FaTicketAlt } from 'react-icons/fa';
 import Image from 'next/image';
 import b777 from "@/public/webp/b777.webp"
 import Link from 'next/link';
+import { routings } from '@/lib/utils';
 
 const HeroSection: React.FC = () => {
     return (
@@ -33,7 +34,7 @@ const HeroSection: React.FC = () => {
                         <span className="text-lg">Booking Reference</span>
                     </div>
                 </div>
-                <Link href="/bookings" className="inline-block bg-yellow-500 text-blue-900 py-3 px-6 rounded-md font-semibold hover:bg-yellow-600 transition duration-300 ease-in-out">
+                <Link href={routings.my_bookings} className="inline-block bg-yellow-500 text-blue-900 py-3 px-6 rounded-md font-semibold hover:bg-yellow-600 transition duration-300 ease-in-out">
                     View My Bookings
                 </Link>
             </div>

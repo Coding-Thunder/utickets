@@ -1,7 +1,7 @@
 import React from 'react';
-import tokyo from "@/public/webp/tokyo.webp"
-import paris from "@/public/webp/paris.webp"
-import sydney from "@/public/webp/sydney.webp"
+import dallas from "@/public/webp/dallas.webp"
+import newYork from "@/public/webp/newyork.webp"
+import seattle from "@/public/webp/seattle.webp"
 
 type Destination = {
     name: string;
@@ -12,22 +12,22 @@ type Destination = {
 
 const destinations: Destination[] = [
     {
-        name: 'Paris, France',
-        image: paris.src,
-        description: 'The city of lights and love, known for its art, fashion, and culture.',
-        link: '/paris',
+        name: 'Dallas',
+        image: dallas.src,
+        description: 'Dallas is a city in the U.S. state of Texas and the most populous city in the Dallas–Fort Worth metroplex',
+        link: '/dallas',
     },
     {
-        name: 'Tokyo, Japan',
-        image: tokyo.src,
-        description: 'A bustling metropolis with a unique blend of tradition and modernity.',
-        link: '/tokyo',
+        name: 'New York',
+        image: newYork.src,
+        description: 'New York, often called New York City or NYC, is the most populous city in the United States',
+        link: '/newyork',
     },
     {
-        name: 'Sydney, Australia',
-        image: sydney.src,
-        description: 'Home to the iconic Sydney Opera House and beautiful beaches.',
-        link: '/sydney',
+        name: 'Seattle',
+        image: seattle.src,
+        description: 'Seattle is a seaport city on the West Coast of the United States. It is the seat of King County, Washington',
+        link: '/seattle',
     },
 ];
 
