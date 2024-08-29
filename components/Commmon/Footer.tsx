@@ -82,7 +82,7 @@ const Footer: React.FC = () => {
 
         <div className="border-t border-gray-700 pt-6">
           <p className="text-center text-gray-400">
-            &copy; {new Date().getFullYear()} Your Company. All rights reserved.
+            &copy; {new Date().getFullYear()} UniversalTickets LLC. All rights reserved.
           </p>
         </div>
       </div>
