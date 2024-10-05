@@ -1,3 +1,9 @@
 {
+<<<<<<< Updated upstream
   "/page": "app/page.js"
+=======
+  "/_not-found/page": "app/_not-found/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/(root)/page": "app/(root)/page.js"
+>>>>>>> Stashed changes
 }
