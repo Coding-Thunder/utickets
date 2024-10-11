@@ -24,6 +24,10 @@ const Header: React.FC<HeaderProps> = () => {
     window.location.reload()
   }
 
+
+
+  
+
   useEffect(() => {
     console.log(user, "from redux")
   }, [])

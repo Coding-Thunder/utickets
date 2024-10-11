@@ -10,7 +10,7 @@ const baseURL = process.env.NODE_ENV === 'production'
 
 const publicAxiosInstance = axios.create({
     baseURL, // Use baseURL from your config or set it directly
-    timeout: 10000, // Set a timeout if desired
+    timeout: 30000, // Set to 30 seconds
     headers: {
         'Content-Type': 'application/json',
         // 'Origin' header is usually set automatically by the browser
@@ -48,6 +48,7 @@ privateAxiosInstance.interceptors.request.use(
 //         return Promise.reject(error);
 //     }
 // );
+
 
 
 const instance = {

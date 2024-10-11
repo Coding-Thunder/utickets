@@ -16,9 +16,47 @@ const signup = async (payload: REGISTER_A_NEW_USER) => {
 
 
 
+// Function to fetch airports from the API
+const fetchAirports = async (query: string) => {
+    try {
+        const response = await instance.publicAxiosInstance.get('/amadeus/airports', {
+            params: {
+                keyword: query,  // Pass the search keyword
+                subType: 'AIRPORT',  // Define the subType as 'AIRPORT'
+                page: 0  // Optionally, pass the page number (default to 0)
+            }
+        });
+        return response.data
+    } catch (error) {
+        console.error('Error fetching airports:', error);
+    }
+};
+
+// In your apiService file
+const fetchAvailableFlights = async (searchParams: {
+    from: string;
+    to: string;
+    date: string;
+    adults: number;
+    children: number;
+    infants: number;
+    classType: string;
+}) => {
+    try {
+        const response = await instance.publicAxiosInstance.get('/amadeus/search-flights', { params: searchParams });
+        return response.data; // Adjust this based on your API response structure
+    } catch (error) {
+        console.error('Error fetching available flights:', error);
+        throw error; // Rethrow error to be handled by the caller
+    }
+};
+
+
 const apiService = {
     login,
-    signup
+    signup,
+    fetchAirports,
+    fetchAvailableFlights
 }
 
 
