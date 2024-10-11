@@ -1,5 +1,4 @@
 "use client";
-import { Button } from "@/components/ui/button"; // Make sure to import the Button component
 import React, { FormEvent } from 'react';
 import AirportSelector from './Selectors/AirportSelector';
 import DateSelectors from './Selectors/DateSelectors';
@@ -12,7 +11,7 @@ const SearchFlights = () => {
     const [fromAirport, setFromAirport] = React.useState<string>('Singapore'); // Default airport
     const [toAirport, setToAirport] = React.useState<string>('Singapore'); // Default airport
     const [adults, setAdults] = React.useState<number>(1); // Default adults
-    const [children, setChildren] = React.useState<number>(0); // Default children
+    const [childrens, setchildrens] = React.useState<number>(0); // Default childrens
     const [infants, setInfants] = React.useState<number>(0); // Default infants
     const [selectedClass, setSelectedClass] = React.useState<string>('Economy'); // Default travel class
     const [fromAirportOpen, setFromAirportOpen] = React.useState(false); // State for From airport popover
@@ -38,7 +37,7 @@ const SearchFlights = () => {
             toAirport,
             departureDate: departureDate?.toISOString() || '', // Fallback to an empty string if undefined
             adults: adults.toString(),
-            children: children.toString(),
+            childrens: childrens.toString(),
             infants: infants.toString(),
             selectedClass,
         }).toString();
@@ -73,14 +72,13 @@ const SearchFlights = () => {
                     label='Travelers'
                     adults={adults}
                     setAdults={setAdults}
-                    children={children}
-                    setChildren={setChildren}
+                    childrens={childrens}
+                    setchildrens={setchildrens}
                     infants={infants}
                     setInfants={setInfants}
                     selectedClass={selectedClass}
                     setSelectedClass={setSelectedClass}
                 />
-                {/* Submit Button */}
                 <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded">Search Flights</button>
             </form>
         </div>

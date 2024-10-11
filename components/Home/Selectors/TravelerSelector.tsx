@@ -6,8 +6,8 @@ interface Props {
     label: string;
     adults: number;
     setAdults: React.Dispatch<React.SetStateAction<number>>;
-    children: number;
-    setChildren: React.Dispatch<React.SetStateAction<number>>;
+    childrens: number;
+    setchildrens: React.Dispatch<React.SetStateAction<number>>;
     infants: number;
     setInfants: React.Dispatch<React.SetStateAction<number>>;
     selectedClass: string; // Prop for selected class
@@ -18,8 +18,8 @@ const TravelerSelector: React.FC<Props> = ({
     label,
     adults,
     setAdults,
-    children,
-    setChildren,
+    childrens,
+    setchildrens,
     infants,
     setInfants,
     selectedClass,
@@ -47,7 +47,7 @@ const TravelerSelector: React.FC<Props> = ({
                 <div className='py-2 rounded-none w-full font-bold'>
                     {/* Display total travelers */}
                     <p className='flex items-center'>
-                        <span className='text-2xl'>{adults + children + infants} </span>
+                        <span className='text-2xl'>{adults + childrens + infants} </span>
                         <span>Traveler(s)</span>
                     </p>
                 </div>
@@ -65,13 +65,13 @@ const TravelerSelector: React.FC<Props> = ({
                         </div>
                     </div>
 
-                    {/* Children Section */}
+                    {/* childrens Section */}
                     <div className='flex justify-between items-center'>
-                        <span>Children (2-12 Years)</span>
+                        <span>childrens (2-12 Years)</span>
                         <div className='flex items-center space-x-2'>
-                            <Button variant='outline' onClick={() => setChildren(Math.max(0, children - 1))}>-</Button>
-                            <span>{children}</span>
-                            <Button variant='outline' onClick={() => setChildren(children + 1)}>+</Button>
+                            <Button variant='outline' onClick={() => setchildrens(Math.max(0, childrens - 1))}>-</Button>
+                            <span>{childrens}</span>
+                            <Button variant='outline' onClick={() => setchildrens(childrens + 1)}>+</Button>
                         </div>
                     </div>
 

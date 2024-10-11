@@ -1,10 +1,9 @@
 "use client"
 import { routings } from '@/lib/utils';
 import Link from 'next/link';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { useSelector } from 'react-redux';
 import UserAvatar from "@/components/UserAvatar/UserAvatar"
-import { useRouter } from 'next/navigation';
 import { RootState } from '@/redux/store';
 // Define a type for the props if you need to pass any
 type HeaderProps = {
@@ -17,7 +16,6 @@ const Header: React.FC<HeaderProps> = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   // const [user, setUser] = useState<Record<string, any> | any>(null)
-  const router = useRouter();
 
   const onLogout = () => {
     localStorage.clear()
@@ -28,9 +26,6 @@ const Header: React.FC<HeaderProps> = () => {
 
   
 
-  useEffect(() => {
-    console.log(user, "from redux")
-  }, [])
 
   return (
     <header className="bg-white text-black sticky top-0 left-0 z-40  shadow-lg ">

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import apiService from '@/axios/api.service';
 import SearchFlights from '@/components/Home/SearchFlights';
@@ -8,8 +8,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getAirlineName } from '@/lib/utils';
 
+// Your debounce function and Flight interface remain the same.
+// Debounce function to limit the rate of API calls
 const debounce = <T extends (...args: any[]) => any>(func: T, delay: number) => {
-    let timeoutId: NodeJS.Timeout;
+    let timeoutId: NodeJS.Timeout | null = null;
     return (...args: Parameters<T>) => {
         if (timeoutId) {
             clearTimeout(timeoutId);
@@ -45,6 +47,7 @@ interface Flight {
     refundable: boolean;
 }
 
+
 const AvailableFlights = () => {
     const searchParams = useSearchParams();
 
@@ -52,20 +55,13 @@ const AvailableFlights = () => {
     const toAirport = searchParams.get('toAirport') || '';
     const departureDate = searchParams.get('departureDate') || '';
     const adults = searchParams.get('adults') || '0';
-    const children = searchParams.get('children') || '0';
+    const childrens = searchParams.get('childrens') || '0';
     const infants = searchParams.get('infants') || '0';
     const selectedClass = searchParams.get('selectedClass') || '';
 
     const [flights, setFlights] = useState<Flight[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
-    const [isMounted, setIsMounted] = useState(true);
-
-    useEffect(() => {
-        return () => {
-            setIsMounted(false);
-        };
-    }, []);
 
     const fetchFlights = useCallback(debounce(async () => {
         if (fromAirport && toAirport && departureDate) {
@@ -76,26 +72,20 @@ const AvailableFlights = () => {
                     to: toAirport,
                     date: departureDate,
                     adults: Number(adults),
-                    children: Number(children),
+                    children: Number(childrens),
                     infants: Number(infants),
                     classType: selectedClass,
                 });
 
-                if (isMounted) {
-                    setFlights(response);
-                }
+                setFlights(response);
             } catch (err) {
                 console.error('Error fetching flights:', err);
-                if (isMounted) {
-                    setError('Failed to fetch available flights. Please try again.');
-                }
+                setError('Failed to fetch available flights. Please try again.');
             } finally {
-                if (isMounted) {
-                    setLoading(false);
-                }
+                setLoading(false);
             }
         }
-    }, 500), [fromAirport, toAirport, departureDate, adults, children, infants, selectedClass]);
+    }, 500), [fromAirport, toAirport, departureDate, adults, childrens, infants, selectedClass]);
 
     useEffect(() => {
         fetchFlights();
@@ -113,11 +103,10 @@ const AvailableFlights = () => {
         <div className="w-full mx-auto px-4 bg-gradient-to-r from-blue-100 to-blue-300">
             <h1 className="text-3xl font-bold mb-6 text-center">Available Flights</h1>
 
-            <div className="p-4 mb-6 rounded-md shadow-md">
+            <div className="p-4 mb-6">
                 <SearchFlights />
             </div>
 
-            {/* Flights List */}
             <div className='w-[50vw] mx-auto'>
                 {flights.length > 0 ? (
                     <ul className="space-y-6">
@@ -181,4 +170,13 @@ const AvailableFlights = () => {
     );
 };
 
-export default AvailableFlights;
+// Wrap your component in a Suspense boundary
+const AvailableFlightsWrapper = () => {
+    return (
+        <Suspense fallback={<p>Loading...</p>}>
+            <AvailableFlights />
+        </Suspense>
+    );
+};
+
+export default AvailableFlightsWrapper;
