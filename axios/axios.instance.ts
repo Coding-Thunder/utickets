@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 // Determine the base URL based on the environment
-const baseURL = !(process.env.NODE_ENV === 'production')
+const baseURL = (process.env.NODE_ENV === 'production')
     ? config.productionServerUrl
     : config.localServerUrl; // Development URL
 
