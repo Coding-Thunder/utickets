@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npx cross-env NODE_ENV=production next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -21,7 +21,6 @@
     "axios": "^1.7.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "cross-env": "^7.0.3",
     "date-fns": "^4.1.0",
     "framer-motion": "^11.3.23",
     "lucide-react": "^0.424.0",
