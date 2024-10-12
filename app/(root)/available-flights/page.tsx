@@ -67,7 +67,7 @@ const AvailableFlights = () => {
         if (fromAirport && toAirport && departureDate) {
             setLoading(true);
             try {
-                const response = await apiService.fetchAvailableFlights({
+                const {data} = await apiService.fetchAvailableFlights({
                     from: fromAirport,
                     to: toAirport,
                     date: departureDate,
@@ -76,8 +76,7 @@ const AvailableFlights = () => {
                     infants: Number(infants),
                     classType: selectedClass,
                 });
-
-                setFlights(response);
+                setFlights(data);
             } catch (err) {
                 console.error('Error fetching flights:', err);
                 setError('Failed to fetch available flights. Please try again.');
