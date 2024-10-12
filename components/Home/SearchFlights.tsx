@@ -38,7 +38,7 @@ const SearchFlights = () => {
             departureDate: departureDate?.toISOString() || '', // Fallback to an empty string if undefined
             adults: adults.toString(),
             childrens: childrens.toString(),
-            infants: infants.toString(),
+            infants: infants.toString(), 
             selectedClass,
         }).toString();
 
