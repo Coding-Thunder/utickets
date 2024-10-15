@@ -35,7 +35,7 @@ const Header: React.FC<HeaderProps> = () => {
         </div>
         <nav className="hidden md:flex space-x-8 items-center">
           <Link href={routings.home} className="block py-2 hover:text-gray-300 transition duration-300 ease-in-out">Home</Link>
-          <Link href={routings.my_bookings} className="hover:text-gray-300 transition duration-300 ease-in-out">My Bookings</Link>
+          <Link href={routings.my_bookings} className="text-center hover:text-gray-300 transition duration-300 ease-in-out">My Bookings</Link>
           <Link href={routings.about} className="hover:text-gray-300 transition duration-300 ease-in-out">About</Link>
           <Link href={routings.support} className="hover:text-gray-300 transition duration-300 ease-in-out">Support</Link>
           <div className="flex space-x-4">
@@ -44,10 +44,10 @@ const Header: React.FC<HeaderProps> = () => {
               <UserAvatar onLogout={onLogout} full_name={user.fullName} />
             ) : (
               <>
-                <Link href={routings.sign_in} className="bg-white text-blue-600 px-4 py-2 rounded-full shadow hover:bg-gray-100 transition duration-300 ease-in-out">
+                <Link href={routings.sign_in} className="bg-white text-center text-blue-600 px-4 py-2 rounded-full shadow hover:bg-gray-100 transition duration-300 ease-in-out">
                   Log In
                 </Link>
-                <Link href={routings.sign_up} className="bg-blue-600 border border-white text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out">
+                <Link href={routings.sign_up} className="text-center bg-blue-600 border border-white text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out">
                   Sign Up
                 </Link>
               </>

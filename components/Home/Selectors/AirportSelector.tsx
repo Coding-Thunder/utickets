@@ -64,48 +64,50 @@ const AirportSelector: React.FC<Props> = ({ label, value, onSelectAirport, isOpe
     };
 
     return (
-        <Popover open={isOpen} onOpenChange={setIsOpen}>
-            <PopoverTrigger className='w-fit text-gray-600 flex flex-col gap-2 md:border-r transition-colors cursor-pointer hover:bg-blue-100 py-2 px-6'>
-                <p>{label}</p>
-                <div className='py-2 rounded-md text-2xl font-bold'>
-                    <p>{selectedAirport ? selectedAirport.cityName : value}</p>
-                </div>
-                <p className='text-[12px]'>
-                    [{selectedAirport ? selectedAirport.iataCode : 'SIN'}] {selectedAirport ? selectedAirport.name : 'Changi Airport'}
-                </p>
-            </PopoverTrigger>
-            <PopoverContent className='bg-white p-4 rounded-md shadow-lg'>
-                <input
-                    type='text'
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    placeholder='Search airports...'
-                    className='w-full border border-gray-300 rounded-md p-2 mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
-                />
-                <div className='max-h-60 overflow-y-auto'>
-                    {loading ? (
-                        <p className='text-gray-500 text-center'>Loading...</p>
-                    ) : (
-                        airports.length > 0 ? (
-                            airports.map((airport) => (
-                                <div
-                                    key={airport.iataCode}
-                                    onClick={() => handleSelectAirport(airport)}
-                                    className='cursor-pointer p-2 hover:bg-blue-100 transition-colors duration-200'
-                                >
-                                    <p className='font-bold'>{airport.name}</p>
-                                    <p className='text-sm text-gray-600'>
-                                        {airport.cityName}, {airport.countryName} ({airport.iataCode})
-                                    </p>
-                                </div>
-                            ))
+        <div className='bg-white'>
+            <Popover open={isOpen} onOpenChange={setIsOpen}>
+                <PopoverTrigger className='w-fit text-gray-600 flex flex-col gap-2 md:border-r transition-colors cursor-pointer hover:bg-blue-100 py-2 px-6'>
+                    <p>{label}</p>
+                    <div className='py-2 rounded-md text-2xl font-bold'>
+                        <p>{selectedAirport ? selectedAirport.cityName : value}</p>
+                    </div>
+                    <p className='text-[12px]'>
+                        [{selectedAirport ? selectedAirport.iataCode : 'SIN'}] {selectedAirport ? selectedAirport.name : 'Changi Airport'}
+                    </p>
+                </PopoverTrigger>
+                <PopoverContent className='bg-white p-4 rounded-md shadow-lg'>
+                    <input
+                        type='text'
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        placeholder='Search airports...'
+                        className='w-full border border-gray-300 rounded-md p-2 mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
+                    />
+                    <div className='max-h-60 overflow-y-auto'>
+                        {loading ? (
+                            <p className='text-gray-500 text-center'>Loading...</p>
                         ) : (
-                            <p className='text-gray-500'>No airports found</p>
-                        )
-                    )}
-                </div>
-            </PopoverContent>
-        </Popover>
+                            airports.length > 0 ? (
+                                airports.map((airport) => (
+                                    <div
+                                        key={airport.iataCode}
+                                        onClick={() => handleSelectAirport(airport)}
+                                        className='cursor-pointer p-2 hover:bg-blue-100 transition-colors duration-200'
+                                    >
+                                        <p className='font-bold'>{airport.name}</p>
+                                        <p className='text-sm text-gray-600'>
+                                            {airport.cityName}, {airport.countryName} ({airport.iataCode})
+                                        </p>
+                                    </div>
+                                ))
+                            ) : (
+                                <p className='text-gray-500'>No airports found</p>
+                            )
+                        )}
+                    </div>
+                </PopoverContent>
+            </Popover>
+        </div>
     );
 };
 

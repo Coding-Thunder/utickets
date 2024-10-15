@@ -9,7 +9,7 @@ const SupportHeader = () => {
 
   return (
     <nav className='h-[50px] flex flex-col md:flex-row  items-center justify-between  bg-gray-100 px-24'>
-      <div>
+      <div className='hidden md:visible'>
         <Breadcrumb />
       </div>
       <div className='flex text-gray-400 items-center h-fit w-fit gap-4'>
