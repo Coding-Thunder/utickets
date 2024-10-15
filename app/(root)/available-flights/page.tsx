@@ -150,8 +150,8 @@ const AvailableFlights = () => {
                                         <div className="flex items-center w-full md:w-auto">
                                             <span className="ml-2 font-medium">
                                                 {flight.itineraries[0].segments.length > 1
-                                                    ? new Date(flight.itineraries[0].segments[1].arrival.at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })
-                                                    : 'N/A'}
+                                                    ? new Date(flight.itineraries[0].segments[flight.itineraries[0].segments.length-1].arrival.at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })
+                                                    : new Date(flight.itineraries[0].segments[0].arrival.at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })}
                                             </span>
                                         </div>
 
