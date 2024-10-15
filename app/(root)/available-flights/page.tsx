@@ -5,8 +5,7 @@ import apiService from '@/axios/api.service';
 import SearchFlights from '@/components/Home/SearchFlights';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { AiOutlineClockCircle, AiOutlineArrowRight } from 'react-icons/ai';
-import dummyData from "@/lib/dummy.json";
+import Loading from '@/components/Commmon/Loading';
 
 // Debounce function to limit the rate of API calls
 const debounce = <T extends (...args: any[]) => any>(func: T, delay: number) => {
@@ -99,7 +98,7 @@ const AvailableFlights = () => {
         return new Date(dateString).toLocaleDateString(undefined, options);
     };
 
-    if (loading) return <p className="text-center text-lg">Loading flights...</p>;
+    if (true) return <Loading/>;
     if (error) return <p className="text-center text-red-600">{error}</p>;
 
     return (
