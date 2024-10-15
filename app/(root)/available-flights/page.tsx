@@ -3,12 +3,11 @@ import React, { useEffect, useState, useCallback, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import apiService from '@/axios/api.service';
 import SearchFlights from '@/components/Home/SearchFlights';
-import { AiOutlineClockCircle, AiOutlineArrowRight } from 'react-icons/ai';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getAirlineName } from '@/lib/utils';
+import { Card, CardContent } from "@/components/ui/card";
+import { AiOutlineClockCircle, AiOutlineArrowRight } from 'react-icons/ai';
+import dummyData from "@/lib/dummy.json";
 
-// Your debounce function and Flight interface remain the same.
 // Debounce function to limit the rate of API calls
 const debounce = <T extends (...args: any[]) => any>(func: T, delay: number) => {
     let timeoutId: NodeJS.Timeout | null = null;
@@ -27,6 +26,7 @@ interface Flight {
     price: {
         currency: string;
         grandTotal: string;
+        base: string;
     };
     itineraries: {
         duration: string;
@@ -47,7 +47,6 @@ interface Flight {
     refundable: boolean;
 }
 
-
 const AvailableFlights = () => {
     const searchParams = useSearchParams();
 
@@ -62,12 +61,14 @@ const AvailableFlights = () => {
     const [flights, setFlights] = useState<Flight[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const [carriers, setCarriers] = useState<Record<string, any>>({});
+    const [aircrafts, setAircrafts] = useState<Record<string, any>>({});
 
     const fetchFlights = useCallback(debounce(async () => {
         if (fromAirport && toAirport && departureDate) {
             setLoading(true);
             try {
-                const {data} = await apiService.fetchAvailableFlights({
+                const response = await apiService.fetchAvailableFlights({
                     from: fromAirport,
                     to: toAirport,
                     date: departureDate,
@@ -76,7 +77,10 @@ const AvailableFlights = () => {
                     infants: Number(infants),
                     classType: selectedClass,
                 });
-                setFlights(data);
+
+                setCarriers(response.dictionaries.carriers);
+                setAircrafts(response.dictionaries.aircraft);
+                setFlights(response.data);
             } catch (err) {
                 console.error('Error fetching flights:', err);
                 setError('Failed to fetch available flights. Please try again.');
@@ -99,62 +103,90 @@ const AvailableFlights = () => {
     if (error) return <p className="text-center text-red-600">{error}</p>;
 
     return (
-        <div className="w-full mx-auto px-4 bg-gradient-to-r from-blue-100 to-blue-300">
+        <div className="w-full mx-auto px-4">
             <h1 className="text-3xl font-bold mb-6 text-center">Available Flights</h1>
 
             <div className="p-4 mb-6">
                 <SearchFlights />
             </div>
 
-            <div className='w-[50vw] mx-auto'>
+            <div className='w-full mx-auto md:w-[70vw] xl:w-[50vw]'>
+
+                <div className='flex flex-wrap sm:flex-nowrap justify-between p-6'>
+                    <p>AIRLINES</p>
+                    <p>DURATION</p>
+                    <p>DEPARTURE</p>
+                    <p>ARRIVE</p>
+                    <p>( USD ) Price</p>
+                </div>
                 {flights.length > 0 ? (
-                    <ul className="space-y-6">
+                    <ul className="space-y-6 p-0">
                         {flights.map((flight) => (
                             <li key={flight.id}>
-                                <Card className="bg-white border shadow-lg p-2 w-full transition duration-300 ease-in-out transform hover:scale-105">
-                                    <CardHeader className="flex items-center justify-between">
-                                        <div className="flex flex-col w-full">
-                                            <CardTitle className="text-xl font-semibold">{getAirlineName(flight.itineraries[0].segments[0].carrierCode)}</CardTitle>
-                                            <p className="text-sm text-gray-500">{flight.itineraries[0].segments[0].carrierCode}</p>
+                                <Card className="bg-white border shadow-lg w-fullrounded-md overflow-hidden">
+                                    <div className="flex flex-wrap sm:flex-nowrap justify-between bg-blue-600 gap-2 text-white p-6">
+                                        <div className='w-full md:w-auto'>
+                                            <div className='font-semibold'>{carriers[flight.itineraries[0].segments[0].carrierCode]}</div>
+                                            <p className="text-sm">{flight.itineraries[0].segments[0].carrierCode}</p>
                                         </div>
-                                        <div className="text-lg font-bold w-full flex justify-between items-center">
-                                            <p>
-                                                {flight.price.currency} {flight.price.grandTotal}
+
+                                        <div className="flex flex-col items-center w-full md:w-auto">
+                                            <p className="font-medium">
+                                                {flight.itineraries[0].duration.replace('PT', '').replace('H', 'h ')}
                                             </p>
-                                            <Button className="bg-blue-600 hover:bg-blue-500 ml-4">
-                                                Book Now
-                                            </Button>
+                                            <p className='text-sm'>
+                                                {flight.itineraries[0].segments.length === 1
+                                                    ? 'Nonstop'
+                                                    : `${flight.itineraries[0].segments.length - 1} stop${flight.itineraries[0].segments.length - 1 !== 1 ? 's' : ''}`}
+                                            </p>
                                         </div>
-                                    </CardHeader>
+
+                                        <div className='flex flex-col justify-center items-center w-full md:w-auto'>
+                                            <span className="font-semibold">
+                                                {new Date(flight.itineraries[0].segments[0].departure.at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })}
+                                            </span>
+                                        </div>
+
+                                        <div className="flex items-center w-full md:w-auto">
+                                            <span className="ml-2 font-medium">
+                                                {flight.itineraries[0].segments.length > 1
+                                                    ? new Date(flight.itineraries[0].segments[1].arrival.at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })
+                                                    : 'N/A'}
+                                            </span>
+                                        </div>
+
+                                        <div className='flex w-fit gap-2'>
+                                            <span>{flight.price.currency}</span>
+                                            <span>{flight.price.base}</span>
+                                        </div>
+                                    </div>
 
                                     <CardContent className="px-0 py-4">
-                                        <div className="flex justify-between items-center">
-                                            <div className="flex flex-col">
-                                                <div className="flex items-center">
-                                                    <span className="font-medium">{flight.itineraries[0].segments[0].departure.iataCode}</span>
-                                                    <AiOutlineClockCircle className="mx-2" />
-                                                    <span className="font-medium">{new Date(flight.itineraries[0].segments[0].departure.at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
-                                                    <AiOutlineArrowRight className="mx-2" />
-                                                    <span className="font-medium">{flight.itineraries[0].segments[flight.itineraries[0].segments.length - 1].arrival.iataCode}</span>
-                                                    <span className="ml-2 font-medium">{new Date(flight.itineraries[0].segments[flight.itineraries[0].segments.length - 1].arrival.at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
-                                                </div>
-                                                <p className="text-sm text-gray-600">{formatDate(departureDate)}</p>
-                                            </div>
-                                            <div className="text-center">
-                                                <p className="text-sm font-medium">
-                                                    {flight.itineraries[0].duration.replace('PT', '').replace('H', 'h ')}
-                                                    {flight.itineraries[0].segments[0].numberOfStops} stop{flight.itineraries[0].segments[0].numberOfStops !== 1 ? 's' : ''}
-                                                </p>
-                                            </div>
-                                            <div className="flex flex-col items-end">
-                                                <span className="font-medium">{flight.itineraries[0].segments[0].arrival.iataCode}</span>
-                                                <span className="font-medium">{new Date(flight.itineraries[0].segments[0].arrival.at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
-                                            </div>
+                                        <div className="flex flex-wrap  justify-center md:justify-between items-center px-4 md:px-12 space-x-2 md:space-x-4 xs:flex-wrap sm:flex-nowrap">
+                                            {flight.itineraries[0].segments.map((segment, index) => (
+                                                <React.Fragment key={index}>
+                                                    {/* Display the departure iataCode */}
+                                                    <span className="font-medium text-sm md:text-2xl">{segment.departure.iataCode}</span>
+
+                                                    {/* Add an arrow */}
+                                                    <span className="mx-1 md:mx-2 text-sm md:text-3xl">→</span>
+
+                                                    {/* For the last segment, display the arrival iataCode */}
+                                                    {index === flight.itineraries[0].segments.length - 1 && (
+                                                        <span className="font-medium text-sm md:text-2xl">{segment.arrival.iataCode}</span>
+                                                    )}
+                                                </React.Fragment>
+                                            ))}
                                         </div>
-                                        <div className="mt-4">
+
+                                        <div className="mt-6 flex flex-col sm:flex-row justify-between items-center px-4 md:px-2 space-x-2 md:space-x-4">
                                             <p className={`text-sm ${flight.refundable ? 'text-green-600 font-bold' : 'text-red-600 font-bold'}`}>
                                                 {flight.refundable ? "Refundable" : "Non-refundable"}
                                             </p>
+
+                                            <Button className="bg-blue-600 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                                                Book Now
+                                            </Button>
                                         </div>
                                     </CardContent>
                                 </Card>

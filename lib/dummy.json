@@ -1,0 +1,344 @@
+{
+    "meta": {
+        "count": 132,
+        "links": {
+            "self": "https://api.amadeus.com/v2/shopping/flight-offers?originLocationCode=DEL&destinationLocationCode=SIN&departureDate=2024-10-18&adults=1&children=0&infants=0&travelClass=ECONOMY&currencyCode=USD"
+        }
+    },
+    "data": [
+        {
+            "type": "flight-offer",
+            "id": "1",
+            "source": "GDS",
+            "instantTicketingRequired": false,
+            "nonHomogeneous": false,
+            "oneWay": false,
+            "isUpsellOffer": false,
+            "lastTicketingDate": "2024-10-18",
+            "lastTicketingDateTime": "2024-10-18",
+            "numberOfBookableSeats": 4,
+            "itineraries": [
+                {
+                    "duration": "PT13H45M",
+                    "segments": [
+                        {
+                            "departure": {
+                                "iataCode": "DEL",
+                                "terminal": "3",
+                                "at": "2024-10-18T16:15:00"
+                            },
+                            "arrival": {
+                                "iataCode": "MAA",
+                                "terminal": "4",
+                                "at": "2024-10-18T19:10:00"
+                            },
+                            "carrierCode": "AI",
+                            "number": "537",
+                            "aircraft": {
+                                "code": "77W"
+                            },
+                            "operating": {
+                                "carrierCode": "AI"
+                            },
+                            "duration": "PT2H55M",
+                            "id": "196",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        },
+                        {
+                            "departure": {
+                                "iataCode": "MAA",
+                                "terminal": "2",
+                                "at": "2024-10-19T01:40:00"
+                            },
+                            "arrival": {
+                                "iataCode": "SIN",
+                                "terminal": "2",
+                                "at": "2024-10-19T08:30:00"
+                            },
+                            "carrierCode": "AI",
+                            "number": "9157",
+                            "aircraft": {
+                                "code": "738"
+                            },
+                            "operating": {
+                                "carrierCode": "IX"
+                            },
+                            "duration": "PT4H20M",
+                            "id": "197",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        }
+                    ]
+                }
+            ],
+            "price": {
+                "currency": "USD",
+                "total": "147.24",
+                "base": "80.00",
+                "fees": [
+                    {
+                        "amount": "0.00",
+                        "type": "SUPPLIER"
+                    },
+                    {
+                        "amount": "0.00",
+                        "type": "TICKETING"
+                    }
+                ],
+                "grandTotal": "147.24"
+            },
+            "pricingOptions": {
+                "fareType": [
+                    "PUBLISHED"
+                ],
+                "includedCheckedBagsOnly": true
+            },
+            "validatingAirlineCodes": [
+                "AI"
+            ],
+            "travelerPricings": [
+                {
+                    "travelerId": "1",
+                    "fareOption": "STANDARD",
+                    "travelerType": "ADULT",
+                    "price": {
+                        "currency": "USD",
+                        "total": "147.24",
+                        "base": "80.00"
+                    },
+                    "fareDetailsBySegment": [
+                        {
+                            "segmentId": "196",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "SU3YXYMA",
+                            "brandedFare": "ECOCOMF",
+                            "brandedFareLabel": "ECO COMFORT",
+                            "class": "S",
+                            "includedCheckedBags": {
+                                "weight": 25,
+                                "weightUnit": "KG"
+                            },
+                            "includedCabinBags": {
+                                "weight": 7,
+                                "weightUnit": "KG"
+                            },
+                            "amenities": [
+                                {
+                                    "description": "PRE RESERVED SEAT ASSIGNMENT",
+                                    "isChargeable": false,
+                                    "amenityType": "PRE_RESERVED_SEAT",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                },
+                                {
+                                    "description": "MEAL SERVICES",
+                                    "isChargeable": false,
+                                    "amenityType": "MEAL",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                },
+                                {
+                                    "description": "REFUNDABLE TICKET",
+                                    "isChargeable": true,
+                                    "amenityType": "BRANDED_FARES",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                },
+                                {
+                                    "description": "CHANGEABLE TICKET",
+                                    "isChargeable": true,
+                                    "amenityType": "BRANDED_FARES",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                },
+                                {
+                                    "description": "UPGRADE",
+                                    "isChargeable": true,
+                                    "amenityType": "UPGRADES",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                },
+                                {
+                                    "description": "FREE CHECKED BAGGAGE ALLOWANCE",
+                                    "isChargeable": false,
+                                    "amenityType": "BRANDED_FARES",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "segmentId": "197",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "SU3YXYMA",
+                            "brandedFare": "ECOCOMF",
+                            "brandedFareLabel": "ECO COMFORT",
+                            "class": "S",
+                            "includedCheckedBags": {
+                                "weight": 25,
+                                "weightUnit": "KG"
+                            },
+                            "amenities": [
+                                {
+                                    "description": "PRE RESERVED SEAT ASSIGNMENT",
+                                    "isChargeable": false,
+                                    "amenityType": "PRE_RESERVED_SEAT",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                },
+                                {
+                                    "description": "MEAL SERVICES",
+                                    "isChargeable": false,
+                                    "amenityType": "MEAL",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                },
+                                {
+                                    "description": "REFUNDABLE TICKET",
+                                    "isChargeable": true,
+                                    "amenityType": "BRANDED_FARES",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                },
+                                {
+                                    "description": "CHANGEABLE TICKET",
+                                    "isChargeable": true,
+                                    "amenityType": "BRANDED_FARES",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                },
+                                {
+                                    "description": "UPGRADE",
+                                    "isChargeable": true,
+                                    "amenityType": "UPGRADES",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                },
+                                {
+                                    "description": "FREE CHECKED BAGGAGE ALLOWANCE",
+                                    "isChargeable": false,
+                                    "amenityType": "BRANDED_FARES",
+                                    "amenityProvider": {
+                                        "name": "BrandedFare"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "dictionaries": {
+        "locations": {
+            "BOM": {
+                "cityCode": "BOM",
+                "countryCode": "IN"
+            },
+            "KUL": {
+                "cityCode": "KUL",
+                "countryCode": "MY"
+            },
+            "BKK": {
+                "cityCode": "BKK",
+                "countryCode": "TH"
+            },
+            "HKG": {
+                "cityCode": "HKG",
+                "countryCode": "HK"
+            },
+            "BLR": {
+                "cityCode": "BLR",
+                "countryCode": "IN"
+            },
+            "DEL": {
+                "cityCode": "DEL",
+                "countryCode": "IN"
+            },
+            "MAA": {
+                "cityCode": "MAA",
+                "countryCode": "IN"
+            },
+            "DXB": {
+                "cityCode": "DXB",
+                "countryCode": "AE"
+            },
+            "AUH": {
+                "cityCode": "AUH",
+                "countryCode": "AE"
+            },
+            "HAN": {
+                "cityCode": "HAN",
+                "countryCode": "VN"
+            },
+            "SIN": {
+                "cityCode": "SIN",
+                "countryCode": "SG"
+            },
+            "CMB": {
+                "cityCode": "CMB",
+                "countryCode": "LK"
+            },
+            "DOH": {
+                "cityCode": "DOH",
+                "countryCode": "QA"
+            }
+        },
+        "aircraft": {
+            "320": "AIRBUS A320",
+            "321": "AIRBUS A321",
+            "330": "AIRBUS INDUSTRIE A330",
+            "333": "AIRBUS A330-300",
+            "351": "AIRBUS A350-1000",
+            "359": "AIRBUS A350-900",
+            "388": "AIRBUS A380-800",
+            "737": "BOEING 737 ALL SERIES PASSENGER",
+            "738": "BOEING 737-800",
+            "772": "BOEING 777-200/200ER",
+            "781": "BOEING 787-10",
+            "787": "787  ALL SERIES PASSENGER",
+            "788": "BOEING 787-8",
+            "789": "BOEING 787-9",
+            "32A": "AIRBUS A320 (SHARKLETS)",
+            "7M8": "BOEING 737 MAX 8",
+            "73H": "BOEING 737-800 (WINGLETS)",
+            "32N": "AIRBUS A320NEO",
+            "32S": "AIRBUS INDUSTRIE A318/A319/A320/A321",
+            "77W": "BOEING 777-300ER"
+        },
+        "currencies": {
+            "USD": "US DOLLAR"
+        },
+        "carriers": {
+            "QR": "QATAR AIRWAYS",
+            "EK": "EMIRATES",
+            "AI": "AIR INDIA",
+            "H1": "HAHN AIR SYSTEMS",
+            "IX": "AIR INDIA EXPRESS",
+            "6E": "INDIGO",
+            "TG": "THAI AIRWAYS INTERNATIONAL",
+            "VJ": "VIETJET AVIATION",
+            "EY": "ETIHAD AIRWAYS",
+            "OD": "BATIK AIR MALAYSIA",
+            "CX": "CATHAY PACIFIC",
+            "UK": "VISTARA",
+            "UL": "SRILANKAN AIRLINES",
+            "VN": "VIETNAM AIRLINES",
+            "MH": "MALAYSIA AIRLINES",
+            "W2": "FLEXFLIGHT",
+            "SQ": "SINGAPORE AIRLINES"
+        }
+    }
+}

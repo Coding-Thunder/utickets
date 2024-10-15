@@ -20,7 +20,8 @@ export const routings = {
   sign_in: "/sign-in",
   sign_up: "/sign-up",
   terms_and_conditons: "/terms-and-conditons",
-  sign_in_success: "/sign-in-success"
+  sign_in_success: "/sign-in-success",
+  book_now:"book-now"
 }
 
 

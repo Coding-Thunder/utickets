@@ -7,7 +7,7 @@ interface Props {
     adults: number;
     setAdults: React.Dispatch<React.SetStateAction<number>>;
     childrens: number;
-    setchildrens: React.Dispatch<React.SetStateAction<number>>;
+    setChildrens: React.Dispatch<React.SetStateAction<number>>; // Change here to match usage
     infants: number;
     setInfants: React.Dispatch<React.SetStateAction<number>>;
     selectedClass: string; // Prop for selected class
@@ -19,7 +19,7 @@ const TravelerSelector: React.FC<Props> = ({
     adults,
     setAdults,
     childrens,
-    setchildrens,
+    setChildrens, // Change here to match props
     infants,
     setInfants,
     selectedClass,
@@ -65,13 +65,13 @@ const TravelerSelector: React.FC<Props> = ({
                         </div>
                     </div>
 
-                    {/* childrens Section */}
+                    {/* Children Section */}
                     <div className='flex justify-between items-center'>
-                        <span>childrens (2-12 Years)</span>
+                        <span>Children (2-12 Years)</span>
                         <div className='flex items-center space-x-2'>
-                            <Button variant='outline' onClick={() => setchildrens(Math.max(0, childrens - 1))}>-</Button>
+                            <Button variant='outline' onClick={() => setChildrens(Math.max(0, childrens - 1))}>-</Button>
                             <span>{childrens}</span>
-                            <Button variant='outline' onClick={() => setchildrens(childrens + 1)}>+</Button>
+                            <Button variant='outline' onClick={() => setChildrens(childrens + 1)}>+</Button>
                         </div>
                     </div>
 
