@@ -66,7 +66,7 @@ const AirportSelector: React.FC<Props> = ({ label, value, onSelectAirport, isOpe
     return (
         <div className='bg-white'>
             <Popover open={isOpen} onOpenChange={setIsOpen}>
-                <PopoverTrigger className='w-fit text-gray-600 flex flex-col gap-2 md:border-r transition-colors cursor-pointer hover:bg-blue-100 py-2 px-6'>
+                <PopoverTrigger className='w-full md:w-fit text-gray-600 flex flex-col gap-2 md:border-r transition-colors cursor-pointer hover:bg-blue-100 py-2 px-6'>
                     <p>{label}</p>
                     <div className='py-2 rounded-md text-2xl font-bold'>
                         <p>{selectedAirport ? selectedAirport.cityName : value}</p>

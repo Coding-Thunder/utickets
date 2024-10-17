@@ -135,7 +135,7 @@ const SearchFlights: React.FC = () => {
                 />
                 <button
                     type="submit"
-                    className={`bg-blue-500 text-white font-semibold py-2 px-4 rounded md:rounded-r ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    className={`bg-blue-500 text-white font-semibold py-2 px-4 rounded md:rounded-none md:rounded-r ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                     disabled={loading}
                 >
                     {loading ? <Loader className='animate-spin' /> : 'Search Flights'}

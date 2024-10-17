@@ -42,7 +42,7 @@ const TravelerSelector: React.FC<Props> = ({
 
     return (
         <Popover>
-            <PopoverTrigger className='w-fit text-gray-600 bg-white flex flex-col gap-2 md:border-r transition-colors cursor-pointer hover:bg-blue-100 py-2 px-6'>
+            <PopoverTrigger className='w-full md:w-fit text-gray-600 bg-white flex flex-col gap-2 md:border-r transition-colors cursor-pointer hover:bg-blue-100 py-2 px-6'>
                 <p>{label}</p>
                 <div className='py-2 rounded-none w-full font-bold'>
                     {/* Display total travelers */}
