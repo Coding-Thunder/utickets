@@ -10,6 +10,7 @@ import ErrorPage from '@/components/Commmon/ErrorPage';
 import { routings } from '@/lib/utils';
 import { useDispatch } from 'react-redux';
 import { bookFlight } from '@/redux/booking/bookingSlice';
+import { Flight } from '@/lib/types';
 
 // Debounce function to limit the rate of API calls
 const debounce = <T extends (...args: any[]) => any>(func: T, delay: number) => {
@@ -24,31 +25,7 @@ const debounce = <T extends (...args: any[]) => any>(func: T, delay: number) => 
     };
 };
 
-interface Flight {
-    id: string;
-    price: {
-        currency: string;
-        grandTotal: string;
-        base: string;
-    };
-    itineraries: {
-        duration: string;
-        segments: {
-            departure: {
-                iataCode: string;
-                at: string;
-            };
-            arrival: {
-                iataCode: string;
-                at: string;
-            };
-            carrierCode: string;
-            number: string;
-            numberOfStops: number;
-        }[];
-    }[];
-    refundable: boolean;
-}
+
 
 const AvailableFlights = () => {
     const searchParams = useSearchParams();

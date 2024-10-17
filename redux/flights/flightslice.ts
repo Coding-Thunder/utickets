@@ -1,25 +1,6 @@
+import { FlightState, SearchCriteria } from '@/lib/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface Airport {
-    iataCode: string;
-    name: string;
-    cityName: string;
-    countryName: string;
-}
-
-interface SearchCriteria {
-    fromAirport: Airport | null; // Changed to include airport details
-    toAirport: Airport | null; // Changed to include airport details
-    departureDate: string | null;
-    adults: number;
-    childrens: number;
-    infants: number;
-    selectedClass: string;
-}
-
-interface FlightState {
-    searchCriteria: SearchCriteria;
-}
 
 const initialState: FlightState = {
     searchCriteria: {
